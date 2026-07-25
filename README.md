@@ -168,7 +168,9 @@ cd analysis && python3 analyze.py && python3 make_report.py
 ```
 
 No credentials live in this repo: auth is Application Default Credentials, and the GCP project is read
-from `GOOGLE_CLOUD_PROJECT`. ~1,600 model calls ≈ US$5.
+from `GOOGLE_CLOUD_PROJECT`. One full run of the grid ≈ 39M input + 2M output tokens ≈ **US$16**
+(measured via Cloud Monitoring). Input dominates because every call resends the agent's full dialogue
+history and the matcher re-sees all eight grids each round.
 
 ## References
 
