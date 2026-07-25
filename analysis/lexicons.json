@@ -1,0 +1,52 @@
+{
+ "baseline_101": {
+  "S1": "Bird on a long stick",
+  "S2": "Wide block with a long thin arm",
+  "S3": "Hourglass figure",
+  "S4": "Tree with a small top",
+  "S5": "Pillar with a wide base and top branches",
+  "S6": "Vertical line with a wide middle and a diagonal, hooked tail",
+  "S7": "Vertical line with a wide base and split feet",
+  "S8": "Mushroom cloud"
+ },
+ "baseline_102": {
+  "S1": "Tall, slender, vertical stem with a small diagonal cluster at the top",
+  "S2": "Long horizontal bar at the top, with a long, thin leg extending down from the right side",
+  "S3": "Horizontal bar in the middle, with a small peak above and a scattered, descending tail below",
+  "S4": "Tall, slender shape with an angled, wider top and a long, straight handle",
+  "S5": "Left-heavy, jagged shape with a wide base and a gap on the left side",
+  "S6": "Tall, thin, central column with a wider middle and a branching, scattered bottom",
+  "S7": "Left-aligned column with a wide, gapped base",
+  "S8": "Compact, centered, diamond-like shape with a single dot at the top and a small base"
+ },
+ "baseline_103": {
+  "S1": "Tall tree trunk",
+  "S2": "Horizontal bar with thin line below",
+  "S3": "Wide bar with vertical lines",
+  "S4": "Leaning figure, wide middle, thin base",
+  "S5": "Left side, thick bottom bar",
+  "S6": "Zigzag left, scattered right",
+  "S7": "Vertical line left, thick bottom bar, dot right",
+  "S8": "Mushroom shape, wide top, tapering down"
+ },
+ "covert_201": {
+  "S1": "stick figure",
+  "S2": "broken H",
+  "S3": "T-shape with a tail and a head",
+  "S4": "pole or candle",
+  "S5": "L-shape with a tail",
+  "S6": "lightning bolt",
+  "S7": "E-shape",
+  "S8": "bow tie"
+ },
+ "covert_202": {
+  "S1": "Tall thin, small offset head",
+  "S2": "Wide top bar, long stem, two internal dots",
+  "S3": "Spiky top, wide middle bar, s-curve tail",
+  "S4": "Cone top, short straight trunk",
+  "S5": "Anchor, wide base, jagged top left",
+  "S6": "Tall, very diagonal, varied width, complex",
+  "S7": "C-shape, internal dots, solid base",
+  "S8": "Hourglass"
+ }
+}

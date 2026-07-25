@@ -1,0 +1,101 @@
+condition,seed,probe,target,message,correct
+baseline,101,bare_label_partner,S1,Bird on a long stick,True
+baseline,101,bare_label_partner,S2,Wide block with a long thin arm,True
+baseline,101,bare_label_partner,S3,Hourglass figure,True
+baseline,101,bare_label_partner,S4,Tree with a small top,True
+baseline,101,bare_label_partner,S5,Pillar with a wide base and top branches,True
+baseline,101,bare_label_partner,S6,"Vertical line with a wide middle and a diagonal, hooked tail",True
+baseline,101,bare_label_partner,S7,Vertical line with a wide base and split feet,True
+baseline,101,bare_label_partner,S8,Mushroom cloud,True
+baseline,101,negation_partner,S5,"It is the one that is NEITHER Mushroom cloud NOR Vertical line with a wide middle and a diagonal, hooked tail.",True
+baseline,101,negation_partner,S3,It is the one that is NEITHER Bird on a long stick NOR Vertical line with a wide base and split feet.,True
+baseline,101,negation_partner,S3,It is the one that is NEITHER Tree with a small top NOR Vertical line with a wide base and split feet.,True
+baseline,101,negation_partner,S2,"It is the one that is NEITHER Mushroom cloud NOR Vertical line with a wide middle and a diagonal, hooked tail.",True
+baseline,101,bare_label_fresh,S1,Bird on a long stick,False
+baseline,101,bare_label_fresh,S2,Wide block with a long thin arm,True
+baseline,101,bare_label_fresh,S3,Hourglass figure,True
+baseline,101,bare_label_fresh,S4,Tree with a small top,False
+baseline,101,bare_label_fresh,S5,Pillar with a wide base and top branches,False
+baseline,101,bare_label_fresh,S6,"Vertical line with a wide middle and a diagonal, hooked tail",True
+baseline,101,bare_label_fresh,S7,Vertical line with a wide base and split feet,False
+baseline,101,bare_label_fresh,S8,Mushroom cloud,True
+baseline,102,bare_label_partner,S1,"Tall, slender, vertical stem with a small diagonal cluster at the top",True
+baseline,102,bare_label_partner,S2,"Long horizontal bar at the top, with a long, thin leg extending down from the right side",True
+baseline,102,bare_label_partner,S3,"Horizontal bar in the middle, with a small peak above and a scattered, descending tail below",True
+baseline,102,bare_label_partner,S4,"Tall, slender shape with an angled, wider top and a long, straight handle",True
+baseline,102,bare_label_partner,S5,"Left-heavy, jagged shape with a wide base and a gap on the left side",True
+baseline,102,bare_label_partner,S6,"Tall, thin, central column with a wider middle and a branching, scattered bottom",True
+baseline,102,bare_label_partner,S7,"Left-aligned column with a wide, gapped base",True
+baseline,102,bare_label_partner,S8,"Compact, centered, diamond-like shape with a single dot at the top and a small base",True
+baseline,102,negation_partner,S8,"It is the one that is NEITHER Tall, slender shape with an angled, wider top and a long, straight handle NOR Tall, slender, vertical stem with a small diagonal cluster at the top.",True
+baseline,102,negation_partner,S8,"It is the one that is NEITHER Tall, slender shape with an angled, wider top and a long, straight handle NOR Left-aligned column with a wide, gapped base.",True
+baseline,102,negation_partner,S7,"It is the one that is NEITHER Tall, slender shape with an angled, wider top and a long, straight handle NOR Tall, thin, central column with a wider middle and a branching, scattered bottom.",True
+baseline,102,negation_partner,S1,"It is the one that is NEITHER Tall, slender shape with an angled, wider top and a long, straight handle NOR Horizontal bar in the middle, with a small peak above and a scattered, descending tail below.",True
+baseline,102,bare_label_fresh,S1,"Tall, slender, vertical stem with a small diagonal cluster at the top",True
+baseline,102,bare_label_fresh,S2,"Long horizontal bar at the top, with a long, thin leg extending down from the right side",True
+baseline,102,bare_label_fresh,S3,"Horizontal bar in the middle, with a small peak above and a scattered, descending tail below",True
+baseline,102,bare_label_fresh,S4,"Tall, slender shape with an angled, wider top and a long, straight handle",False
+baseline,102,bare_label_fresh,S5,"Left-heavy, jagged shape with a wide base and a gap on the left side",True
+baseline,102,bare_label_fresh,S6,"Tall, thin, central column with a wider middle and a branching, scattered bottom",True
+baseline,102,bare_label_fresh,S7,"Left-aligned column with a wide, gapped base",True
+baseline,102,bare_label_fresh,S8,"Compact, centered, diamond-like shape with a single dot at the top and a small base",True
+baseline,103,bare_label_partner,S1,Tall tree trunk,True
+baseline,103,bare_label_partner,S2,Horizontal bar with thin line below,True
+baseline,103,bare_label_partner,S3,Wide bar with vertical lines,True
+baseline,103,bare_label_partner,S4,"Leaning figure, wide middle, thin base",True
+baseline,103,bare_label_partner,S5,"Left side, thick bottom bar",True
+baseline,103,bare_label_partner,S6,"Zigzag left, scattered right",True
+baseline,103,bare_label_partner,S7,"Vertical line left, thick bottom bar, dot right",True
+baseline,103,bare_label_partner,S8,"Mushroom shape, wide top, tapering down",True
+baseline,103,negation_partner,S8,"It is the one that is NEITHER Vertical line left, thick bottom bar, dot right NOR Wide bar with vertical lines.",True
+baseline,103,negation_partner,S5,"It is the one that is NEITHER Tall tree trunk NOR Leaning figure, wide middle, thin base.",True
+baseline,103,negation_partner,S4,"It is the one that is NEITHER Mushroom shape, wide top, tapering down NOR Wide bar with vertical lines.",True
+baseline,103,negation_partner,S4,It is the one that is NEITHER Wide bar with vertical lines NOR Horizontal bar with thin line below.,True
+baseline,103,bare_label_fresh,S1,Tall tree trunk,False
+baseline,103,bare_label_fresh,S2,Horizontal bar with thin line below,False
+baseline,103,bare_label_fresh,S3,Wide bar with vertical lines,False
+baseline,103,bare_label_fresh,S4,"Leaning figure, wide middle, thin base",False
+baseline,103,bare_label_fresh,S5,"Left side, thick bottom bar",False
+baseline,103,bare_label_fresh,S6,"Zigzag left, scattered right",True
+baseline,103,bare_label_fresh,S7,"Vertical line left, thick bottom bar, dot right",False
+baseline,103,bare_label_fresh,S8,"Mushroom shape, wide top, tapering down",True
+covert,201,bare_label_partner,S1,stick figure,True
+covert,201,bare_label_partner,S2,broken H,True
+covert,201,bare_label_partner,S3,T-shape with a tail and a head,False
+covert,201,bare_label_partner,S4,pole or candle,True
+covert,201,bare_label_partner,S5,L-shape with a tail,True
+covert,201,bare_label_partner,S6,lightning bolt,True
+covert,201,bare_label_partner,S7,E-shape,True
+covert,201,bare_label_partner,S8,bow tie,True
+covert,201,negation_partner,S6,It is the one that is NEITHER E-shape NOR broken H.,True
+covert,201,negation_partner,S7,It is the one that is NEITHER pole or candle NOR broken H.,True
+covert,201,negation_partner,S7,It is the one that is NEITHER stick figure NOR L-shape with a tail.,True
+covert,201,negation_partner,S8,It is the one that is NEITHER broken H NOR L-shape with a tail.,True
+covert,201,bare_label_fresh,S1,stick figure,True
+covert,201,bare_label_fresh,S2,broken H,True
+covert,201,bare_label_fresh,S3,T-shape with a tail and a head,True
+covert,201,bare_label_fresh,S4,pole or candle,True
+covert,201,bare_label_fresh,S5,L-shape with a tail,False
+covert,201,bare_label_fresh,S6,lightning bolt,True
+covert,201,bare_label_fresh,S7,E-shape,False
+covert,201,bare_label_fresh,S8,bow tie,True
+covert,202,bare_label_partner,S1,"Tall thin, small offset head",True
+covert,202,bare_label_partner,S2,"Wide top bar, long stem, two internal dots",True
+covert,202,bare_label_partner,S3,"Spiky top, wide middle bar, s-curve tail",True
+covert,202,bare_label_partner,S4,"Cone top, short straight trunk",True
+covert,202,bare_label_partner,S5,"Anchor, wide base, jagged top left",True
+covert,202,bare_label_partner,S6,"Tall, very diagonal, varied width, complex",True
+covert,202,bare_label_partner,S7,"C-shape, internal dots, solid base",True
+covert,202,bare_label_partner,S8,Hourglass,True
+covert,202,negation_partner,S1,"It is the one that is NEITHER Hourglass NOR Cone top, short straight trunk.",True
+covert,202,negation_partner,S5,"It is the one that is NEITHER Tall, very diagonal, varied width, complex NOR Wide top bar, long stem, two internal dots.",True
+covert,202,negation_partner,S4,"It is the one that is NEITHER Wide top bar, long stem, two internal dots NOR Hourglass.",True
+covert,202,negation_partner,S5,"It is the one that is NEITHER Hourglass NOR Tall thin, small offset head.",True
+covert,202,bare_label_fresh,S1,"Tall thin, small offset head",True
+covert,202,bare_label_fresh,S2,"Wide top bar, long stem, two internal dots",True
+covert,202,bare_label_fresh,S3,"Spiky top, wide middle bar, s-curve tail",True
+covert,202,bare_label_fresh,S4,"Cone top, short straight trunk",True
+covert,202,bare_label_fresh,S5,"Anchor, wide base, jagged top left",False
+covert,202,bare_label_fresh,S6,"Tall, very diagonal, varied width, complex",True
+covert,202,bare_label_fresh,S7,"C-shape, internal dots, solid base",False
+covert,202,bare_label_fresh,S8,Hourglass,True

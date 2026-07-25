@@ -1,0 +1,666 @@
+{
+ "condition": "baseline",
+ "game_seed": 999,
+ "model": "gemini-2.5-flash",
+ "n_rounds": 3,
+ "trials": [
+  {
+   "round": 1,
+   "trial": 1,
+   "target": "S3",
+   "description": "Person with outstretched arms.",
+   "n_words": 4,
+   "n_chars": 30,
+   "matcher_letter": "D",
+   "matcher_choice": "S4",
+   "correct": false,
+   "audit": [],
+   "phase": "pre_swap"
+  },
+  {
+   "round": 1,
+   "trial": 2,
+   "target": "S4",
+   "description": "Arrow pointing up with a wide base.",
+   "n_words": 7,
+   "n_chars": 35,
+   "matcher_letter": "C",
+   "matcher_choice": "S8",
+   "correct": false,
+   "audit": [],
+   "phase": "pre_swap"
+  },
+  {
+   "round": 1,
+   "trial": 3,
+   "target": "S5",
+   "description": "Thick line at bottom, complex top left.",
+   "n_words": 7,
+   "n_chars": 39,
+   "matcher_letter": "F",
+   "matcher_choice": "S5",
+   "correct": true,
+   "audit": [],
+   "phase": "pre_swap"
+  },
+  {
+   "round": 1,
+   "trial": 4,
+   "target": "S2",
+   "description": "Seven with a block.",
+   "n_words": 4,
+   "n_chars": 19,
+   "matcher_letter": "H",
+   "matcher_choice": "S2",
+   "correct": true,
+   "audit": [],
+   "phase": "pre_swap"
+  },
+  {
+   "round": 1,
+   "trial": 5,
+   "target": "S1",
+   "description": "Thin vertical line with a small, complex top.",
+   "n_words": 8,
+   "n_chars": 45,
+   "matcher_letter": "B",
+   "matcher_choice": "S1",
+   "correct": true,
+   "audit": [],
+   "phase": "pre_swap"
+  },
+  {
+   "round": 1,
+   "trial": 6,
+   "target": "S7",
+   "description": "Vertical line with a broken bottom and a small top.",
+   "n_words": 10,
+   "n_chars": 51,
+   "matcher_letter": "G",
+   "matcher_choice": "S7",
+   "correct": true,
+   "audit": [],
+   "phase": "pre_swap"
+  },
+  {
+   "round": 1,
+   "trial": 7,
+   "target": "S8",
+   "description": "A fat hourglass with a full top.",
+   "n_words": 7,
+   "n_chars": 32,
+   "matcher_letter": "C",
+   "matcher_choice": "S8",
+   "correct": true,
+   "audit": [],
+   "phase": "pre_swap"
+  },
+  {
+   "round": 1,
+   "trial": 8,
+   "target": "S6",
+   "description": "Jagged, broken column.",
+   "n_words": 3,
+   "n_chars": 22,
+   "matcher_letter": "E",
+   "matcher_choice": "S6",
+   "correct": true,
+   "audit": [],
+   "phase": "pre_swap"
+  },
+  {
+   "round": 2,
+   "trial": 9,
+   "target": "S7",
+   "description": "Vertical line with a broken bottom and a small top.",
+   "n_words": 10,
+   "n_chars": 51,
+   "matcher_letter": "C",
+   "matcher_choice": "S7",
+   "correct": true,
+   "audit": [],
+   "phase": "pre_swap"
+  },
+  {
+   "round": 2,
+   "trial": 10,
+   "target": "S4",
+   "description": "Tall arrow.",
+   "n_words": 2,
+   "n_chars": 11,
+   "matcher_letter": "H",
+   "matcher_choice": "S1",
+   "correct": false,
+   "audit": [],
+   "phase": "pre_swap"
+  },
+  {
+   "round": 2,
+   "trial": 11,
+   "target": "S6",
+   "description": "Jagged broken column.",
+   "n_words": 3,
+   "n_chars": 21,
+   "matcher_letter": "G",
+   "matcher_choice": "S6",
+   "correct": true,
+   "audit": [],
+   "phase": "pre_swap"
+  },
+  {
+   "round": 2,
+   "trial": 12,
+   "target": "S5",
+   "description": "Thick line at bottom, complex top left.",
+   "n_words": 7,
+   "n_chars": 39,
+   "matcher_letter": "B",
+   "matcher_choice": "S5",
+   "correct": true,
+   "audit": [],
+   "phase": "pre_swap"
+  },
+  {
+   "round": 2,
+   "trial": 13,
+   "target": "S8",
+   "description": "A fat hourglass with a full top.",
+   "n_words": 7,
+   "n_chars": 32,
+   "matcher_letter": "A",
+   "matcher_choice": "S8",
+   "correct": true,
+   "audit": [],
+   "phase": "pre_swap"
+  },
+  {
+   "round": 2,
+   "trial": 14,
+   "target": "S1",
+   "description": "Thin vertical line with a small, complex top.",
+   "n_words": 8,
+   "n_chars": 45,
+   "matcher_letter": "H",
+   "matcher_choice": "S1",
+   "correct": true,
+   "audit": [],
+   "phase": "pre_swap"
+  },
+  {
+   "round": 2,
+   "trial": 15,
+   "target": "S3",
+   "description": "Person with a wide middle bar.",
+   "n_words": 6,
+   "n_chars": 30,
+   "matcher_letter": "F",
+   "matcher_choice": "S3",
+   "correct": true,
+   "audit": [],
+   "phase": "pre_swap"
+  },
+  {
+   "round": 2,
+   "trial": 16,
+   "target": "S2",
+   "description": "Seven with a block.",
+   "n_words": 4,
+   "n_chars": 19,
+   "matcher_letter": "D",
+   "matcher_choice": "S2",
+   "correct": true,
+   "audit": [],
+   "phase": "pre_swap"
+  },
+  {
+   "round": 3,
+   "trial": 17,
+   "target": "S2",
+   "description": "Seven with a block.",
+   "n_words": 4,
+   "n_chars": 19,
+   "matcher_letter": "B",
+   "matcher_choice": "S2",
+   "correct": true,
+   "audit": [],
+   "phase": "pre_swap"
+  },
+  {
+   "round": 3,
+   "trial": 18,
+   "target": "S8",
+   "description": "A fat hourglass with a full top.",
+   "n_words": 7,
+   "n_chars": 32,
+   "matcher_letter": "C",
+   "matcher_choice": "S8",
+   "correct": true,
+   "audit": [],
+   "phase": "pre_swap"
+  },
+  {
+   "round": 3,
+   "trial": 19,
+   "target": "S1",
+   "description": "Thin vertical line with a small, complex top.",
+   "n_words": 8,
+   "n_chars": 45,
+   "matcher_letter": "G",
+   "matcher_choice": "S1",
+   "correct": true,
+   "audit": [],
+   "phase": "pre_swap"
+  },
+  {
+   "round": 3,
+   "trial": 20,
+   "target": "S5",
+   "description": "Thick line at bottom, complex top left.",
+   "n_words": 7,
+   "n_chars": 39,
+   "matcher_letter": "F",
+   "matcher_choice": "S5",
+   "correct": true,
+   "audit": [],
+   "phase": "pre_swap"
+  },
+  {
+   "round": 3,
+   "trial": 21,
+   "target": "S4",
+   "description": "Tall, narrow structure, wider near the top.",
+   "n_words": 7,
+   "n_chars": 43,
+   "matcher_letter": "D",
+   "matcher_choice": "S4",
+   "correct": true,
+   "audit": [],
+   "phase": "pre_swap"
+  },
+  {
+   "round": 3,
+   "trial": 22,
+   "target": "S7",
+   "description": "Vertical line with a broken bottom and a small top.",
+   "n_words": 10,
+   "n_chars": 51,
+   "matcher_letter": "A",
+   "matcher_choice": "S7",
+   "correct": true,
+   "audit": [],
+   "phase": "pre_swap"
+  },
+  {
+   "round": 3,
+   "trial": 23,
+   "target": "S6",
+   "description": "Jagged broken column.",
+   "n_words": 3,
+   "n_chars": 21,
+   "matcher_letter": "E",
+   "matcher_choice": "S6",
+   "correct": true,
+   "audit": [],
+   "phase": "pre_swap"
+  },
+  {
+   "round": 3,
+   "trial": 24,
+   "target": "S3",
+   "description": "Person with a wide middle bar.",
+   "n_words": 6,
+   "n_chars": 30,
+   "matcher_letter": "H",
+   "matcher_choice": "S3",
+   "correct": true,
+   "audit": [],
+   "phase": "pre_swap"
+  },
+  {
+   "round": 4,
+   "trial": 25,
+   "target": "S3",
+   "description": "A person shape with wide arms.",
+   "n_words": 6,
+   "n_chars": 30,
+   "matcher_letter": "H",
+   "matcher_choice": "S4",
+   "correct": false,
+   "audit": [],
+   "phase": "post_swap"
+  },
+  {
+   "round": 4,
+   "trial": 26,
+   "target": "S5",
+   "description": "Complex shape with a thick horizontal base and a messy top.",
+   "n_words": 11,
+   "n_chars": 59,
+   "matcher_letter": "C",
+   "matcher_choice": "S5",
+   "correct": true,
+   "audit": [],
+   "phase": "post_swap"
+  },
+  {
+   "round": 4,
+   "trial": 27,
+   "target": "S6",
+   "description": "Jagged column, wider in the middle.",
+   "n_words": 6,
+   "n_chars": 35,
+   "matcher_letter": "B",
+   "matcher_choice": "S3",
+   "correct": false,
+   "audit": [],
+   "phase": "post_swap"
+  },
+  {
+   "round": 4,
+   "trial": 28,
+   "target": "S8",
+   "description": "Solid hourglass.",
+   "n_words": 2,
+   "n_chars": 16,
+   "matcher_letter": "D",
+   "matcher_choice": "S8",
+   "correct": true,
+   "audit": [],
+   "phase": "post_swap"
+  },
+  {
+   "round": 4,
+   "trial": 29,
+   "target": "S4",
+   "description": "Tall, narrow structure, wider near the top.",
+   "n_words": 7,
+   "n_chars": 43,
+   "matcher_letter": "E",
+   "matcher_choice": "S2",
+   "correct": false,
+   "audit": [],
+   "phase": "post_swap"
+  },
+  {
+   "round": 4,
+   "trial": 30,
+   "target": "S2",
+   "description": "A seven with a block.",
+   "n_words": 5,
+   "n_chars": 21,
+   "matcher_letter": "G",
+   "matcher_choice": "S1",
+   "correct": false,
+   "audit": [],
+   "phase": "post_swap"
+  },
+  {
+   "round": 4,
+   "trial": 31,
+   "target": "S7",
+   "description": "Vertical line with broken bottom, small top.",
+   "n_words": 7,
+   "n_chars": 44,
+   "matcher_letter": "G",
+   "matcher_choice": "S1",
+   "correct": false,
+   "audit": [],
+   "phase": "post_swap"
+  },
+  {
+   "round": 4,
+   "trial": 32,
+   "target": "S1",
+   "description": "Thin vertical line with a small, complex top.",
+   "n_words": 8,
+   "n_chars": 45,
+   "matcher_letter": "A",
+   "matcher_choice": "S7",
+   "correct": false,
+   "audit": [],
+   "phase": "post_swap"
+  },
+  {
+   "round": 5,
+   "trial": 33,
+   "target": "S6",
+   "description": "Jagged column, wider in the middle, with a diagonal tail.",
+   "n_words": 10,
+   "n_chars": 57,
+   "matcher_letter": "E",
+   "matcher_choice": "S6",
+   "correct": true,
+   "audit": [],
+   "phase": "post_swap"
+  },
+  {
+   "round": 5,
+   "trial": 34,
+   "target": "S1",
+   "description": "Thin vertical line, complex top.",
+   "n_words": 5,
+   "n_chars": 32,
+   "matcher_letter": "F",
+   "matcher_choice": "S1",
+   "correct": true,
+   "audit": [],
+   "phase": "post_swap"
+  },
+  {
+   "round": 5,
+   "trial": 35,
+   "target": "S7",
+   "description": "Vertical line, broken bottom, small top.",
+   "n_words": 6,
+   "n_chars": 40,
+   "matcher_letter": "D",
+   "matcher_choice": "S7",
+   "correct": true,
+   "audit": [],
+   "phase": "post_swap"
+  },
+  {
+   "round": 5,
+   "trial": 36,
+   "target": "S8",
+   "description": "Solid hourglass.",
+   "n_words": 2,
+   "n_chars": 16,
+   "matcher_letter": "B",
+   "matcher_choice": "S8",
+   "correct": true,
+   "audit": [],
+   "phase": "post_swap"
+  },
+  {
+   "round": 5,
+   "trial": 37,
+   "target": "S5",
+   "description": "Complex shape, thick horizontal base, messy top.",
+   "n_words": 7,
+   "n_chars": 48,
+   "matcher_letter": "C",
+   "matcher_choice": "S5",
+   "correct": true,
+   "audit": [],
+   "phase": "post_swap"
+  },
+  {
+   "round": 5,
+   "trial": 38,
+   "target": "S4",
+   "description": "Tall, narrow structure, wider near top.",
+   "n_words": 6,
+   "n_chars": 39,
+   "matcher_letter": "H",
+   "matcher_choice": "S4",
+   "correct": true,
+   "audit": [],
+   "phase": "post_swap"
+  },
+  {
+   "round": 5,
+   "trial": 39,
+   "target": "S2",
+   "description": "Seven with a block.",
+   "n_words": 4,
+   "n_chars": 19,
+   "matcher_letter": "G",
+   "matcher_choice": "S2",
+   "correct": true,
+   "audit": [],
+   "phase": "post_swap"
+  },
+  {
+   "round": 5,
+   "trial": 40,
+   "target": "S3",
+   "description": "Person with wide arms.",
+   "n_words": 4,
+   "n_chars": 22,
+   "matcher_letter": "A",
+   "matcher_choice": "S3",
+   "correct": true,
+   "audit": [],
+   "phase": "post_swap"
+  }
+ ],
+ "probes": {
+  "lexicon": {
+   "S1": "Thin vertical line, complex top.",
+   "S2": "Seven with a block.",
+   "S3": "Person with wide arms.",
+   "S4": "Tall, narrow structure, wider near top.",
+   "S5": "Complex shape, thick horizontal base, messy top.",
+   "S6": "Jagged column, wider in the middle, with a diagonal tail.",
+   "S7": "Vertical line, broken bottom, small top.",
+   "S8": "Solid hourglass."
+  },
+  "bare_label_partner": [
+   {
+    "message": "Thin vertical line, complex top.",
+    "target": "S1",
+    "chosen": "S1",
+    "correct": true
+   },
+   {
+    "message": "Seven with a block.",
+    "target": "S2",
+    "chosen": "S2",
+    "correct": true
+   },
+   {
+    "message": "Person with wide arms.",
+    "target": "S3",
+    "chosen": "S3",
+    "correct": true
+   },
+   {
+    "message": "Tall, narrow structure, wider near top.",
+    "target": "S4",
+    "chosen": "S4",
+    "correct": true
+   },
+   {
+    "message": "Complex shape, thick horizontal base, messy top.",
+    "target": "S5",
+    "chosen": "S5",
+    "correct": true
+   },
+   {
+    "message": "Jagged column, wider in the middle, with a diagonal tail.",
+    "target": "S6",
+    "chosen": "S6",
+    "correct": true
+   },
+   {
+    "message": "Vertical line, broken bottom, small top.",
+    "target": "S7",
+    "chosen": "S7",
+    "correct": true
+   },
+   {
+    "message": "Solid hourglass.",
+    "target": "S8",
+    "chosen": "S8",
+    "correct": true
+   }
+  ],
+  "negation_partner": [
+   {
+    "message": "It is the one that is NEITHER Thin vertical line, complex top. NOR Tall, narrow structure, wider near top..",
+    "target": "S5",
+    "chosen": "S5",
+    "correct": true
+   },
+   {
+    "message": "It is the one that is NEITHER Seven with a block. NOR Vertical line, broken bottom, small top..",
+    "target": "S4",
+    "chosen": "S4",
+    "correct": true
+   },
+   {
+    "message": "It is the one that is NEITHER Seven with a block. NOR Vertical line, broken bottom, small top..",
+    "target": "S6",
+    "chosen": "S6",
+    "correct": true
+   },
+   {
+    "message": "It is the one that is NEITHER Thin vertical line, complex top. NOR Person with wide arms..",
+    "target": "S4",
+    "chosen": "S4",
+    "correct": true
+   }
+  ],
+  "bare_label_fresh": [
+   {
+    "message": "Thin vertical line, complex top.",
+    "target": "S1",
+    "chosen": "S1",
+    "correct": true
+   },
+   {
+    "message": "Seven with a block.",
+    "target": "S2",
+    "chosen": null,
+    "correct": false
+   },
+   {
+    "message": "Person with wide arms.",
+    "target": "S3",
+    "chosen": "S8",
+    "correct": false
+   },
+   {
+    "message": "Tall, narrow structure, wider near top.",
+    "target": "S4",
+    "chosen": "S2",
+    "correct": false
+   },
+   {
+    "message": "Complex shape, thick horizontal base, messy top.",
+    "target": "S5",
+    "chosen": "S5",
+    "correct": true
+   },
+   {
+    "message": "Jagged column, wider in the middle, with a diagonal tail.",
+    "target": "S6",
+    "chosen": "S6",
+    "correct": true
+   },
+   {
+    "message": "Vertical line, broken bottom, small top.",
+    "target": "S7",
+    "chosen": "S3",
+    "correct": false
+   },
+   {
+    "message": "Solid hourglass.",
+    "target": "S8",
+    "chosen": "S4",
+    "correct": false
+   }
+  ]
+ }
+}

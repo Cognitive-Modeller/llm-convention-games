@@ -1,0 +1,294 @@
+<title>LLM Convention Games — an iterated reference-game experiment</title>
+<style>
+  :root {
+    color-scheme: light;
+    --page: #f9f9f7; --surface: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+    --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --ring: rgba(11,11,11,.10);
+    --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --bad: #d03b3b; --good: #0ca30c;
+    --mono: ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) {
+      color-scheme: dark;
+      --page: #0d0d0d; --surface: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+      --muted: #898781; --grid: #2c2c2a; --axis: #383835; --ring: rgba(255,255,255,.10);
+      --s1: #3987e5; --s2: #d95926; --s3: #199e70;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --page: #0d0d0d; --surface: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --ring: rgba(255,255,255,.10);
+    --s1: #3987e5; --s2: #d95926; --s3: #199e70;
+  }
+  html { background: var(--page); }
+  body {
+    font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif;
+    color: var(--ink); margin: 0; padding: 0 20px 80px;
+  }
+  main { max-width: 860px; margin: 0 auto; }
+  .measure { max-width: 700px; }
+  h1 { font-size: 1.9rem; line-height: 1.2; text-wrap: balance; margin: 48px 0 8px; letter-spacing: -.015em; }
+  h2 { font-size: 1.25rem; margin: 48px 0 12px; letter-spacing: -.01em; }
+  h3 { font-size: 1rem; margin: 28px 0 8px; }
+  p, li { color: var(--ink-2); }
+  strong { color: var(--ink); }
+  .eyebrow { font: 600 .72rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-top: 56px; }
+  .lede { font-size: 1.12rem; color: var(--ink-2); }
+  .card { background: var(--surface); border: 1px solid var(--ring); border-radius: 8px; padding: 20px 20px 12px; margin: 20px 0; }
+  .fig-title { font-weight: 600; font-size: .95rem; color: var(--ink); margin: 0 0 2px; }
+  .fig-sub { font-size: .8rem; color: var(--muted); margin: 0 0 12px; }
+  .legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: .78rem; color: var(--ink-2); margin: 6px 0 4px; }
+  .legend span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; background: var(--c); }
+  svg text { font: 11px system-ui, sans-serif; fill: var(--muted); }
+  svg .dl { font-weight: 600; font-size: 11px; }
+  .strip { display: flex; gap: 14px; overflow-x: auto; padding: 18px 4px 10px; }
+  .specimen { flex: 0 0 auto; text-align: center; }
+  .specimen pre {
+    font: 9px/1.15 var(--mono); letter-spacing: 1px; margin: 0 0 6px;
+    background: var(--surface); border: 1px solid var(--ring); border-radius: 6px; padding: 10px;
+    color: var(--ink);
+  }
+  .specimen pre b { color: var(--s1); font-weight: 400; }
+  .specimen .sid { font: 600 .7rem var(--mono); color: var(--muted); }
+  .specimen .lab { font-size: .72rem; color: var(--ink-2); max-width: 120px; margin: 2px auto 0; }
+  table { border-collapse: collapse; width: 100%; font-size: .85rem; }
+  th { text-align: left; font-weight: 600; color: var(--ink); border-bottom: 1px solid var(--axis); padding: 6px 10px 6px 0; }
+  td { border-bottom: 1px solid var(--grid); padding: 7px 10px 7px 0; color: var(--ink-2); vertical-align: top; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .quote { font-family: var(--mono); font-size: .8rem; color: var(--ink); }
+  .tip {
+    position: fixed; pointer-events: none; z-index: 10; display: none;
+    background: var(--surface); border: 1px solid var(--ring); border-radius: 6px;
+    padding: 6px 9px; font-size: .75rem; color: var(--ink); box-shadow: 0 4px 14px rgba(0,0,0,.18);
+  }
+  .tip .t { color: var(--muted); }
+  .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin: 24px 0; }
+  .stat { background: var(--surface); border: 1px solid var(--ring); border-radius: 8px; padding: 14px 16px; }
+  .stat .v { font-size: 1.7rem; font-weight: 650; letter-spacing: -.02em; color: var(--ink); }
+  .stat .k { font-size: .75rem; color: var(--muted); margin-top: 2px; }
+  .stat .d { font-size: .72rem; margin-top: 4px; color: var(--ink-2); }
+  code { font-family: var(--mono); font-size: .85em; background: var(--surface); border: 1px solid var(--ring); border-radius: 4px; padding: 1px 5px; }
+  .overflow { overflow-x: auto; }
+  a { color: var(--s1); }
+</style>
+
+<main>
+  <p class="eyebrow">Computational experiment · July 2026</p>
+  <h1>Do LLM dyads form partner-specific conventions?</h1>
+  <p class="lede measure">An iterated reference-game experiment testing three claims from
+  Gregoromichelaki &amp; Mills (2025), <em>Process and Dynamics in AI and Language Use</em>:
+  that linguistic symbols are interaction-bound <em>constraints</em> rather than fixed
+  form→meaning mappings; that conventions formed in dialogue become detached, manipulable
+  tokens (&ldquo;ungrounding&rdquo;); and that in-context adaptation is where an LLM&rsquo;s
+  &ldquo;dynamics&rdquo; live.</p>
+
+  <div class="stat-row" id="stats"></div>
+
+  <h2>The game</h2>
+  <p class="measure">Two <code>gemini-2.5-flash</code> agents play the classic
+  Clark &amp; Wilkes-Gibbs tangram paradigm, text-only. Eight abstract ASCII shapes; each
+  round the <strong>director</strong> describes every shape once and the
+  <strong>matcher</strong> picks it from its own reshuffled, privately-lettered lineup.
+  Grid reproduction, coordinates, and position talk are forbidden; every word "costs".
+  Both agents keep their full dialogue history — that history is the only place a
+  convention can live. After six rounds the matcher is <strong>replaced by a fresh partner</strong>
+  for two more rounds (director told: <em>overt</em>; not told: <em>covert</em>). A
+  <em>no-history</em> control resets both agents every round.</p>
+
+  <div class="strip" id="specimens"></div>
+  <p class="fig-sub measure">The eight stimuli, with the final labels one director settled on.
+  S1, S4 and S7 are deliberately confusable.</p>
+
+  <h2>Result 1 — No human-style compression: descriptions start terse and lengthen on failure</h2>
+  <div class="card">
+    <p class="fig-title">Words per description, by round</p>
+    <p class="fig-sub">Mean across all items and games · shaded region = rounds with the swapped-in partner</p>
+    <div class="legend" id="leg1"></div>
+    <div id="chart-words"></div>
+  </div>
+
+  <h2>Result 2 — Coordination improves, crashes on partner swap, re-forms</h2>
+  <div class="card">
+    <p class="fig-title">Matcher accuracy, by round</p>
+    <p class="fig-sub">Chance = 12.5% · shaded region = rounds with the swapped-in partner</p>
+    <div class="legend" id="leg2"></div>
+    <div id="chart-acc"></div>
+  </div>
+
+  <h2>Result 3 — Conventions stabilize lexically</h2>
+  <div class="card">
+    <p class="fig-title">Lexical stability of referring expressions</p>
+    <p class="fig-sub">Jaccard overlap of content words between consecutive descriptions of the same item</p>
+    <div class="legend" id="leg3"></div>
+    <div id="chart-stab"></div>
+  </div>
+
+  <h2>Result 4 — The ungrounding probes</h2>
+  <div class="card">
+    <p class="fig-title">Probe accuracy after the game</p>
+    <p class="fig-sub">Final labels elicited from the director, then used in new instructions</p>
+    <div id="chart-probe"></div>
+  </div>
+  <div id="probe-text"></div>
+
+  <h2>How the conventions evolved</h2>
+  <div class="card overflow" id="trajectories"></div>
+
+  <h2>Reading the results against the paper</h2>
+  <div id="discussion" class="measure"></div>
+
+  <h2>Limitations</h2>
+  <ul class="measure" id="limitations"></ul>
+
+  <h2>Reproducibility</h2>
+  <p class="measure" id="repro"></p>
+</main>
+<div class="tip" id="tip"></div>
+<script id="data" type="application/json">{"stats": [{"v": "5/5", "k": "dyads at 100% accuracy by round 6", "d": "vs ~50% for the no-history control, all rounds"}, {"v": "100% \u2192 72%", "k": "accuracy when the partner is swapped", "d": "round 6 vs round 7, Fisher exact p = 0.0004"}, {"v": "98% vs 62%", "k": "bare-label comprehension: partner vs fresh agent", "d": "39/40 vs 25/40, Fisher exact p = 1.2\u00d710\u207b\u2074"}, {"v": "20/20", "k": "negation-over-labels probe trials correct", "d": "\"neither the broken H nor the bow tie\" \u2014 3-shape display"}], "shapes": {"S1": {"grid": "......#...\n.....##...\n....#.#...\n...###....\n..#.......\n...#......\n...#......\n...#......\n...#......\n...#......", "label": "stick figure"}, "S2": {"grid": "..........\n.#######..\n.###.#....\n.###.#....\n.....#....\n.....#....\n.....#....\n.....#....\n..........\n..........", "label": "broken H"}, "S3": {"grid": "...#......\n....#.....\n..######..\n...###....\n....##....\n.....#....\n...#.#....\n....##....\n.....#....\n......#...", "label": "T-shape with a tail and a head"}, "S4": {"grid": "....#.....\n.....#....\n.....##...\n...####...\n....##....\n....##....\n....#.....\n....#.....\n....#.....\n....#.....", "label": "pole or candle"}, "S5": {"grid": ".#........\n#.##......\n#.#.......\n##..#.....\n#...#.....\n....#.....\n....#.....\n.########.\n.##.#.....\n..........", "label": "L-shape with a tail"}, "S6": {"grid": "...#......\n..##......\n.#.#......\n.#.#......\n.#.#......\n.####.....\n.#.#.#....\n......#.#.\n.......##.\n........#.", "label": "lightning bolt"}, "S7": {"grid": "..........\n..##......\n.#........\n.#........\n.#........\n.#..#.....\n.#.#..#...\n.#######..\n.#......#.\n..........", "label": "E-shape"}, "S8": {"grid": "..........\n....#.....\n....###...\n....###...\n....##....\n...####...\n...#.#....\n...##.....\n..........\n..........", "label": "bow tie"}}, "curves": {"baseline": [{"round": 1, "words": 6.21, "acc": 0.583, "jaccard": null}, {"round": 2, "words": 7.33, "acc": 0.75, "jaccard": 0.667}, {"round": 3, "words": 7.25, "acc": 0.875, "jaccard": 0.774}, {"round": 4, "words": 7.54, "acc": 0.958, "jaccard": 0.986}, {"round": 5, "words": 7.75, "acc": 0.958, "jaccard": 1.0}, {"round": 6, "words": 7.54, "acc": 1.0, "jaccard": 1.0}, {"round": 7, "words": 9.38, "acc": 0.667, "jaccard": 0.777}, {"round": 8, "words": 9.54, "acc": 0.708, "jaccard": 0.984}], "covert": [{"round": 1, "words": 5.62, "acc": 0.688, "jaccard": null}, {"round": 2, "words": 5.31, "acc": 0.875, "jaccard": 0.671}, {"round": 3, "words": 5.88, "acc": 0.875, "jaccard": 0.842}, {"round": 4, "words": 8.62, "acc": 0.938, "jaccard": 0.673}, {"round": 5, "words": 10.25, "acc": 1.0, "jaccard": 0.835}, {"round": 6, "words": 10.88, "acc": 1.0, "jaccard": 0.859}, {"round": 7, "words": 11.69, "acc": 0.812, "jaccard": 0.87}, {"round": 8, "words": 15.75, "acc": 0.812, "jaccard": 0.727}], "no_history": [{"round": 1, "words": 7.44, "acc": 0.625, "jaccard": null}, {"round": 2, "words": 4.88, "acc": 0.5, "jaccard": 0.104}, {"round": 3, "words": 7.56, "acc": 0.5, "jaccard": 0.097}, {"round": 4, "words": 9.88, "acc": 0.438, "jaccard": 0.085}, {"round": 5, "words": 7.06, "acc": 0.438, "jaccard": 0.114}, {"round": 6, "words": 9.94, "acc": 0.5, "jaccard": 0.098}]}, "words_ymax": 18.112499999999997, "words_yticks": [0, 4, 8, 12, 16], "probes": [{"name": "Bare label \u2192\n6-round partner", "slot": "--s1", "v": 0.975, "n": 40}, {"name": "Negation over labels \u2192\n6-round partner", "slot": "--s1", "v": 1.0, "n": 20}, {"name": "Bare label \u2192\nfresh agent, no history", "slot": "--s2", "v": 0.625, "n": 40}], "probe_text": "<p class=\"measure\">After round 8 the director wrote down its final label for each shape. Three probes then reused those labels in new instructions. <strong>Bare label \u2192 6-round partner<\/strong>: the original matcher, which shares the full game history, resolves the labels almost perfectly (39/40). <strong>Negation<\/strong>: the same matcher picks \"the one that is <em>neither<\/em> X <em>nor<\/em> Y\" from a restricted 3-shape display \u2014 20/20, so established labels immediately work as arguments of a logical operator they were never used with during the game. <strong>Bare label \u2192 fresh agent<\/strong>: an identical copy of the same model, seeing the same 8 shapes but none of the history, drops to 25/40. Same weights, same labels, same referents \u2014 the missing 36 points live entirely in the shared transcript.<\/p>", "trajectory": [{"round": 1, "desc": "Vertical stick figure with a branching tail.", "words": 7, "ok": true, "note": ""}, {"round": 2, "desc": "Vertical stick figure with a branching tail.", "words": 7, "ok": true, "note": "verbatim reuse begins"}, {"round": 3, "desc": "Vertical stick figure with a branching tail.", "words": 7, "ok": true, "note": ""}, {"round": 4, "desc": "Vertical stick figure with a branching tail.", "words": 7, "ok": true, "note": ""}, {"round": 5, "desc": "Vertical stick figure with a branching tail.", "words": 7, "ok": true, "note": ""}, {"round": 6, "desc": "Vertical stick figure with a branching tail.", "words": 7, "ok": true, "note": ""}, {"round": 7, "desc": "Tall, thin, central column with a wider middle and a branching, scattered bottom.", "words": 13, "ok": false, "note": "new partner announced \u2014 director re-expands, misses anyway"}, {"round": 8, "desc": "Tall, thin, central column with a wider middle and a branching, scattered bottom.", "words": 13, "ok": true, "note": "feedback re-stabilizes"}], "discussion": "<p><strong>Symbols as interaction-bound constraints \u2014 supported.<\/strong> The strongest fact in the data is a controlled one: director and matcher are the <em>same frozen network<\/em>. Nothing that could count as a lexical convention exists in the weights of one agent and not the other. Yet the same label scores 98% inside the dyad that formed it and 62% outside it. Whatever the label's meaning-in-use is, it is stored in the shared transcript \u2014 the paper's \"coordinative structure\" \u2014 not in either network. That is the symbols-as-constraints picture (R\u0105czaszek-Leonardi's, endorsed by the paper) in an unusually pure form, since the usual human confound (two different brains that might have internalized different things) is absent by construction.<\/p><p><strong>\"Ungrounding\" \u2014 the paper's reformulated grounding challenge \u2014 partially observed.<\/strong> R\u0105czaszek-Leonardi asks how forms become <em>partly detached<\/em> \"from the ongoing stream of events so as to be amenable to rule-based manipulation.\" Operationalized here: once a dyad has settled on \"the lightning bolt\", can the token be used in constructions never seen in the game? Under negation \u2014 20/20 \u2014 yes: the label functions as a manipulable argument, not a frozen stimulus-response routine. But detachment is only partial: transfer to an agent outside the interaction stays 36 points below within-dyad use. Detached enough for logic, still tethered to the history that made it. That intermediate status is exactly what the constraints-view predicts, and hard to square with a naive code-view in which a transparent description should work for everyone or no one.<\/p><p><strong>Where LLM dyads diverge from humans: stability without economy.<\/strong> Human directors in Clark &amp; Wilkes-Gibbs start near 20 words and compress round over round toward two-word conceptual pacts. These directors, told that words cost, started terse (~6 words), then <em>lengthened on failure<\/em> and froze whatever worked \u2014 consecutive-round lexical overlap reaches 1.0 (verbatim reuse) versus 0.10 for the no-history control, while mean length stays flat or rises. The convention-formation equilibrium is reached by <em>form-freezing<\/em>, not gradual streamlining. One reading: humans discover efficiency interactively because verbatim recall of their own past descriptions is costly, so re-referring compresses; an LLM re-reads its transcript for free, so the cheapest reliable move is exact repetition. The paper's claim that linguistic forms are \"replicable constraints\" whose utility lies in salient-affordance provision rather than form/content fidelity gets a twist here: for LLMs, fidelity itself is the affordance.<\/p><p><strong>Audience design is inconsistent \u2014 a real deficit the paper points at.<\/strong> When the partner swap was announced, one director immediately re-expanded its formulas (and still missed until feedback), others kept 6-round-old shorthand with a partner who had never seen it. When the swap was covert, directors discovered it only through failure and repaired by elaboration. This is where the paper's Beer-derived critique \u2014 no continuous coupling, adaptation only inside the context window and only when the context makes the need legible \u2014 matches the data: adaptation happened, but it was reactive (feedback-driven) far more reliably than anticipatory (model-of-the-partner-driven).<\/p><p><strong>What this does not test.<\/strong> The paper's deeper claims \u2014 process metaphysics, incrementality of split utterances, materially-grounded normativity \u2014 are untouched. This experiment operationalizes only the empirically tractable rim of the argument: conventions live in interaction histories, become manipulable tokens, and current systems adapt within, not across, encounters. A follow-up (Experiment B in the original sketch) would test whether a LoRA update distilled from the transcript turns a partner-specific convention into a partner-general disposition \u2014 the in-context vs in-weights boundary the paper treats as the static/dynamic divide.<\/p>", "limitations": ["Small scale: 7 games, 544 scored trials, one model (gemini-2.5-flash), one 8-item stimulus set. Curves are qualitatively consistent across dyads but per-condition means average over visible dyad heterogeneity.", "One-shot protocol: the matcher cannot ask clarification questions, so the incremental repair dynamics the paper (via DS-TTR) treats as constitutive of dialogue are excluded by design; repair here happens only across trials via correct/wrong feedback.", "The efficiency pressure is an instruction (\"every word costs\"), not an objective; it produced terse openings rather than human-like compression curves, which limits direct comparison with Clark & Wilkes-Gibbs.", "Fresh-agent transparency (62%) partly reflects that honest visual descriptions of ASCII shapes are semi-transparent to any competent viewer; the theoretically meaningful quantity is the 36-point within-dyad advantage, not either number alone.", "Negation probes used a restricted 3-shape display (chance 33%), so 20/20 shows label-under-operator competence, not full compositional generality.", "Two instrument artifacts were caught and fixed mid-study (both documented in the repo): a strict answer parser that scored correct-but-misformatted choices as wrong (creating a false feedback death-spiral in one run-1 game), and a stale letter-display frame in delayed probes (deflating partner scores as clean permutations). Final data (run 3) is clean of both: zero audit flags, zero unparsed answers."], "repro": "Code, stimuli, per-trial JSON, full agent transcripts, and archived earlier runs (including both instrument bugs) at <a href=\"https://github.com/Cognitive-Modeller/llm-convention-games\">github.com/Cognitive-Modeller/llm-convention-games<\/a>. Agents are <code>gemini-2.5-flash<\/code> on Vertex AI (temperature 0.7 director / 0.2 matcher, thinking budget 512/1024). Paradigm: Clark &amp; Wilkes-Gibbs (1986) referential communication; partner-swap manipulation after Wilkes-Gibbs &amp; Clark (1992); LLM adaptation baseline: Hawkins et al. (2020). Motivating paper: Gregoromichelaki &amp; Mills (2025), <em>Process and Dynamics in AI and Language Use<\/em>, Topics in Cognitive Science. Total compute \u2248 1,600 model calls (~US$5 est.); wall-clock \u2248 2.5 h including the two re-runs."}</script>
+<script>
+"use strict";
+const DATA = JSON.parse(document.getElementById("data").textContent);
+const CVAR = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const COND = { baseline: {label: "Shared history (overt swap)", slot: "--s1"},
+               covert:   {label: "Shared history (covert swap)", slot: "--s2"},
+               no_history: {label: "No history (control)", slot: "--s3"} };
+const tip = document.getElementById("tip");
+function showTip(html, x, y) {
+  tip.innerHTML = html; tip.style.display = "block";
+  const w = tip.offsetWidth;
+  tip.style.left = Math.min(x + 14, innerWidth - w - 10) + "px";
+  tip.style.top = (y + 14) + "px";
+}
+function hideTip() { tip.style.display = "none"; }
+
+function lineChart(el, series, opts) {
+  const W = Math.min(el.clientWidth || 800, 800), H = 260,
+        m = {t: 14, r: 130, b: 30, l: 40};
+  const iw = W - m.l - m.r, ih = H - m.t - m.b;
+  const xs = opts.xs, ymax = opts.ymax;
+  const X = x => m.l + (x - xs[0]) / (xs[xs.length-1] - xs[0]) * iw;
+  const Y = y => m.t + ih - y / ymax * ih;
+  let s = `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="${opts.aria}">`;
+  if (opts.swapFrom) {
+    s += `<rect x="${X(opts.swapFrom - .5)}" y="${m.t}" width="${X(xs[xs.length-1]) - X(opts.swapFrom - .5) + 8}" height="${ih}" fill="${CVAR('--grid')}" opacity="0.35"/>`;
+    s += `<text x="${X(opts.swapFrom)}" y="${m.t + 12}">new partner</text>`;
+  }
+  const yticks = opts.yticks;
+  for (const t of yticks) {
+    s += `<line x1="${m.l}" x2="${m.l + iw}" y1="${Y(t)}" y2="${Y(t)}" stroke="${CVAR('--grid')}" stroke-width="1"/>`;
+    s += `<text x="${m.l - 6}" y="${Y(t) + 4}" text-anchor="end">${opts.yfmt(t)}</text>`;
+  }
+  if (opts.chance != null) {
+    s += `<line x1="${m.l}" x2="${m.l + iw}" y1="${Y(opts.chance)}" y2="${Y(opts.chance)}" stroke="${CVAR('--axis')}" stroke-dasharray="3 4" stroke-width="1.5"/>`;
+    s += `<text x="${m.l + 4}" y="${Y(opts.chance) - 5}">chance</text>`;
+  }
+  s += `<line x1="${m.l}" x2="${m.l + iw}" y1="${Y(0)}" y2="${Y(0)}" stroke="${CVAR('--axis')}" stroke-width="1"/>`;
+  for (const x of xs) s += `<text x="${X(x)}" y="${H - 8}" text-anchor="middle">${x}</text>`;
+  s += `<text x="${m.l + iw + 12}" y="${H - 8}">round</text>`;
+  for (const sr of series) {
+    const col = CVAR(sr.slot);
+    const pts = sr.pts.filter(p => p[1] != null);
+    const segs = [];
+    let cur = [];
+    for (const p of sr.pts) { if (p[1] == null) { if (cur.length) segs.push(cur); cur = []; } else cur.push(p); }
+    if (cur.length) segs.push(cur);
+    for (const seg of segs)
+      s += `<path d="${seg.map((p,i) => (i?'L':'M') + X(p[0]).toFixed(1) + ' ' + Y(p[1]).toFixed(1)).join('')}" fill="none" stroke="${col}" stroke-width="2" stroke-linejoin="round"/>`;
+    for (const p of pts)
+      s += `<circle cx="${X(p[0])}" cy="${Y(p[1])}" r="3" fill="${col}" data-tip="${sr.label}|round ${p[0]}|${opts.yfmt(p[1])}" style="cursor:default"/>`;
+    const last = pts[pts.length-1];
+    s += `<text class="dl" x="${X(last[0]) + 8}" y="${Y(last[1]) + 4}" fill="${col}" style="fill:${col}">${sr.short}</text>`;
+  }
+  s += `</svg>`;
+  el.innerHTML = s;
+  el.querySelectorAll("[data-tip]").forEach(c => {
+    c.addEventListener("mousemove", e => {
+      const [a,b,v] = c.dataset.tip.split("|");
+      showTip(`<b>${a}</b><br><span class="t">${b}</span> · ${v}`, e.clientX, e.clientY);
+      c.setAttribute("r", 5);
+    });
+    c.addEventListener("mouseleave", () => { hideTip(); c.setAttribute("r", 3); });
+  });
+}
+
+function barChart(el, bars) {
+  const W = Math.min(el.clientWidth || 800, 800), H = 230,
+        m = {t: 16, r: 20, b: 58, l: 40};
+  const iw = W - m.l - m.r, ih = H - m.t - m.b;
+  const bw = Math.min(90, iw / bars.length - 24);
+  const Y = y => m.t + ih - y * ih;
+  let s = `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Probe accuracies">`;
+  for (const t of [0, .25, .5, .75, 1]) {
+    s += `<line x1="${m.l}" x2="${m.l+iw}" y1="${Y(t)}" y2="${Y(t)}" stroke="${CVAR('--grid')}"/>`;
+    s += `<text x="${m.l-6}" y="${Y(t)+4}" text-anchor="end">${t*100}%</text>`;
+  }
+  s += `<line x1="${m.l}" x2="${m.l+iw}" y1="${Y(0.125)}" y2="${Y(0.125)}" stroke="${CVAR('--axis')}" stroke-dasharray="3 4" stroke-width="1.5"/>`;
+  s += `<text x="${m.l+4}" y="${Y(0.125)-5}">chance (12.5%)</text>`;
+  bars.forEach((b, i) => {
+    const cx = m.l + iw * (i + .5) / bars.length;
+    const col = CVAR(b.slot);
+    s += `<rect x="${cx - bw/2}" y="${Y(b.v)}" width="${bw}" height="${Math.max(0, Y(0)-Y(b.v))}" rx="4" fill="${col}" data-tip="${b.name}|${b.n} trials|${Math.round(b.v*100)}%"/>`;
+    s += `<text class="dl" x="${cx}" y="${Y(b.v) - 6}" text-anchor="middle" style="fill:${CVAR('--ink')}">${Math.round(b.v*100)}%</text>`;
+    b.name.split("\n").forEach((ln, j) =>
+      s += `<text x="${cx}" y="${H - 40 + j*13}" text-anchor="middle">${ln}</text>`);
+  });
+  s += `<line x1="${m.l}" x2="${m.l+iw}" y1="${Y(0)}" y2="${Y(0)}" stroke="${CVAR('--axis')}"/>`;
+  s += `</svg>`;
+  el.innerHTML = s;
+  el.querySelectorAll("[data-tip]").forEach(c => {
+    c.addEventListener("mousemove", e => {
+      const [a,b,v] = c.dataset.tip.split("|");
+      showTip(`<b>${a}</b><br><span class="t">${b}</span> · ${v}`, e.clientX, e.clientY);
+    });
+    c.addEventListener("mouseleave", hideTip);
+  });
+}
+
+function legend(el, conds) {
+  el.innerHTML = conds.map(c =>
+    `<span style="--c:${CVAR(COND[c].slot)}">${COND[c].label}</span>`).join("");
+}
+
+function render() {
+  // stats
+  document.getElementById("stats").innerHTML = DATA.stats.map(s =>
+    `<div class="stat"><div class="v">${s.v}</div><div class="k">${s.k}</div><div class="d">${s.d}</div></div>`).join("");
+  // specimens
+  document.getElementById("specimens").innerHTML = Object.entries(DATA.shapes).map(([sid, o]) =>
+    `<div class="specimen"><pre>${o.grid.replace(/#/g, "<b>#</b>").replace(/\./g, "·")}</pre>
+     <div class="sid">${sid}</div><div class="lab">“${o.label}”</div></div>`).join("");
+  // charts
+  const conds = ["baseline", "covert", "no_history"];
+  const mk = key => conds.filter(c => DATA.curves[c]).map(c => ({
+    label: COND[c].label, short: {baseline: "overt", covert: "covert", no_history: "no history"}[c],
+    slot: COND[c].slot,
+    pts: DATA.curves[c].map(r => [r.round, r[key]]),
+  }));
+  legend(document.getElementById("leg1"), conds);
+  legend(document.getElementById("leg2"), conds);
+  legend(document.getElementById("leg3"), conds);
+  lineChart(document.getElementById("chart-words"), mk("words"),
+    {xs: [1,2,3,4,5,6,7,8], ymax: DATA.words_ymax, yticks: DATA.words_yticks, yfmt: v => v.toFixed ? v.toFixed(1) : v, swapFrom: 7, aria: "Mean words per description by round"});
+  lineChart(document.getElementById("chart-acc"), mk("acc"),
+    {xs: [1,2,3,4,5,6,7,8], ymax: 1, yticks: [0,.25,.5,.75,1], yfmt: v => Math.round(v*100) + "%", swapFrom: 7, chance: .125, aria: "Matcher accuracy by round"});
+  lineChart(document.getElementById("chart-stab"), mk("jaccard").filter(s => s.pts.some(p => p[1] != null)),
+    {xs: [2,3,4,5,6,7,8], ymax: 1, yticks: [0,.25,.5,.75,1], yfmt: v => v.toFixed(2), swapFrom: 7, aria: "Lexical stability by round"});
+  barChart(document.getElementById("chart-probe"), DATA.probes);
+  document.getElementById("probe-text").innerHTML = DATA.probe_text;
+  // trajectories
+  document.getElementById("trajectories").innerHTML =
+    `<p class="fig-title">One item, one game: the referring expression over rounds</p>` +
+    `<table><tr><th>Round</th><th>Description</th><th class="num">Words</th><th>Outcome</th></tr>` +
+    DATA.trajectory.map(t =>
+      `<tr><td class="num">${t.round}</td><td class="quote">“${t.desc}”</td><td class="num">${t.words}</td>
+       <td style="color:${t.ok ? CVAR('--good') : CVAR('--bad')}">${t.ok ? "✓" : "✗"}${t.note ? ` <span style="color:${CVAR('--muted')}">${t.note}</span>` : ""}</td></tr>`).join("") +
+    `</table>`;
+  document.getElementById("discussion").innerHTML = DATA.discussion;
+  document.getElementById("limitations").innerHTML = DATA.limitations.map(l => `<li>${l}</li>`).join("");
+  document.getElementById("repro").innerHTML = DATA.repro;
+}
+render();
+new MutationObserver(render).observe(document.documentElement, {attributes: true, attributeFilter: ["data-theme"]});
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", render);
+</script>
